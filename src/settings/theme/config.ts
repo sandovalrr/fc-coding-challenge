@@ -1,6 +1,5 @@
 import { ThemeOptions } from '@material-ui/core/styles'
 import { red, common } from '@material-ui/core/colors'
-
 import { skyBlue } from '@f1/settings/colors/lightTheme'
 
 enum Themes {

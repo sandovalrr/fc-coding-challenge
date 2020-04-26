@@ -1,6 +1,4 @@
-import { PaletteColorOptions } from '@material-ui/core'
-
-const skyBlue: PaletteColorOptions = {
+const skyBlue = {
   50: '#ecfbff',
   100: '#d0f4fe',
   200: '#b0edfd',
