@@ -1,4 +1,4 @@
-export interface Driver {
+interface Driver {
   driverId: string
   permanentNumber: string
   code: string
@@ -9,14 +9,14 @@ export interface Driver {
   nationality: string
 }
 
-export interface Constructor {
+interface Constructor {
   constructorId: string
   url: string
   name: string
   nationality: string
 }
 
-export interface DriverStanding {
+interface DriverStanding {
   position: string
   positionText: string
   points: string

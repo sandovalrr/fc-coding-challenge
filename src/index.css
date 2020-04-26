@@ -18,3 +18,32 @@ body,
   position: relative;
   margin: 0;
 }
+
+a:not([role=button]) {
+  color: rgb(44,187,169);
+  text-decoration: none;
+}
+
+h1, .h1 {
+    font-size: 24px;
+}
+
+h2, .h2 {
+    font-size: 20px;
+}
+
+h3, .h3 {
+    font-size: 16px;
+}
+
+h4, .h4 {
+    font-size: 15px;
+}
+
+h5, .h5 {
+    font-size: 13px;
+}
+
+h6, .h6 {
+    font-size: 12px;
+}

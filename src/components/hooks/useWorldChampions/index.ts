@@ -3,9 +3,7 @@ import React from 'react'
 import { Standing } from '@f1/shared/models/standing'
 import { fetchWorldChampions } from '@f1/shared/service'
 
-type Option = {}
-
-const useWorldChampions = ({}: Option = {}) => {
+const useWorldChampions = () => {
   const [records, setRecords] = React.useState<Standing[]>([])
   const [loading, setLoading] = React.useState<boolean>(false)
 
@@ -14,7 +12,7 @@ const useWorldChampions = ({}: Option = {}) => {
     fetchWorldChampions()
       .then(setRecords)
       .finally(() => setLoading(false))
-  }, [setLoading])
+  }, [setLoading, setRecords])
 
   return {
     loading,
