@@ -1,16 +1,9 @@
 import React from 'react'
 
+import { useParams, Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Breadcrumbs from '@material-ui/core/Breadcrumbs'
-import { Standing } from '@f1/shared/models/standing'
-import { WorldChampionList } from '@f1/components/organisisms/WorldChampionList'
-
-type Props = {
-  loading?: boolean
-  records: Standing[]
-  onItemClicked: (record: Standing) => void
-}
 
 const useStyles = makeStyles((theme) => ({
   breadcrumbs: {
@@ -18,18 +11,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const HomeTemplate: React.FC<Props> = ({ records, loading, onItemClicked }) => {
+const DetailTemplate: React.FC<{}> = () => {
   const classes = useStyles()
+  const { season } = useParams()
   return (
     <>
       <Breadcrumbs aria-label="breadcrumb" className={classes.breadcrumbs}>
+        <Link to="/home">
+          <Typography variant="h5"> Home</Typography>
+        </Link>
         <Typography color="textPrimary" variant="h5">
-          Home
+          Season {season}
         </Typography>
       </Breadcrumbs>
-      <WorldChampionList records={records} onItemClicked={onItemClicked} loading={loading} />
+      <div>hola</div>
     </>
   )
 }
 
-export { HomeTemplate }
+export { DetailTemplate }

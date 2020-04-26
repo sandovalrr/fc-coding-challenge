@@ -1,10 +1,12 @@
 import React from 'react'
 
+import Skeleton from '@material-ui/lab/Skeleton'
 import cn from 'classnames'
 import { makeStyles } from '@material-ui/core/styles'
 import Avatar from '@material-ui/core/Avatar'
 
 type Props = {
+  loading?: boolean
   year: number | string
   className?: string
   qaId?: string
@@ -24,8 +26,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const YearAvatar: React.FC<Props> = ({ className, year, qaId = 'app' }) => {
+const YearAvatar: React.FC<Props> = ({ className, year, qaId = 'app', loading }) => {
   const classes = useStyles()
+
+  if (loading) return <Skeleton className={classes.root} animation="wave" variant="circle" />
+
   return (
     <Avatar
       className={cn(classes.root, `bg-${parseInt(year.toString(), 10) % 2}`, className)}

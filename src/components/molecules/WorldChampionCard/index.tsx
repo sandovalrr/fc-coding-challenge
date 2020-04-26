@@ -11,8 +11,10 @@ import { YearAvatar } from '@f1/components/atoms/YearAvatar'
 import { TableNameValueRow } from '@f1/components/atoms/TableNameValueRow'
 import FlagIcon from '@material-ui/icons/Flag'
 import StarIcon from '@material-ui/icons/Star'
+import Skeleton from '@material-ui/lab/Skeleton'
 
 type Props = {
+  loading?: boolean
   standing: Standing
   onClick?: (item: Standing) => void
 }
@@ -31,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
 
 const WorldChampionCard: React.FC<Props> = ({
   standing,
+  loading,
   standing: { season, round, DriverStandings },
   onClick,
 }) => {
@@ -56,53 +59,72 @@ const WorldChampionCard: React.FC<Props> = ({
         <CardActionArea onClick={handleClick}>
           <CardHeader
             classes={{ title: classes.title, subheader: classes.subheader }}
-            avatar={<YearAvatar qaId={`world-champion-card-${season}`} year={season} />}
+            avatar={
+              <YearAvatar qaId={`world-champion-card-${season}`} year={season} loading={loading} />
+            }
             title={
-              <a
-                target="_blank"
-                href={Driver.url}
-                rel="noopener noreferrer"
-                onClick={stopPropagation}
-              >
-                {Driver.givenName} {Driver.familyName}
-              </a>
+              loading ? (
+                <Skeleton animation="wave" height={10} width="80%" />
+              ) : (
+                <a
+                  target="_blank"
+                  href={Driver.url}
+                  rel="noopener noreferrer"
+                  onClick={stopPropagation}
+                >
+                  {Driver.givenName} {Driver.familyName}
+                </a>
+              )
             }
             subheader={
-              <>
-                <FlagIcon />
-                {Driver.nationality}
-              </>
+              loading ? (
+                <Skeleton animation="wave" height={10} width="80%" />
+              ) : (
+                <>
+                  <FlagIcon />
+                  {Driver.nationality}
+                </>
+              )
             }
           />
           <CardContent>
-            <table className={classes.table}>
-              <tbody>
-                <TableNameValueRow name="Year" value={season} />
-                <TableNameValueRow
-                  name="Team"
-                  value={
-                    <a
-                      target="_blank"
-                      href={team.url}
-                      rel="noopener noreferrer"
-                      onClick={stopPropagation}
-                    >
-                      {team.name}
-                    </a>
-                  }
-                />
-                <TableNameValueRow name="Points" value={points} />
-                <TableNameValueRow
-                  name="Wins"
-                  value={
-                    <>
-                      {wins}
-                      <StarIcon />
-                    </>
-                  }
-                />
-              </tbody>
-            </table>
+            {loading ? (
+              <>
+                <Skeleton animation="wave" height={15} width="100%" />
+                <Skeleton animation="wave" height={15} width="100%" />
+                <Skeleton animation="wave" height={15} width="100%" />
+                <Skeleton animation="wave" height={15} width="100%" />
+              </>
+            ) : (
+              <table className={classes.table}>
+                <tbody>
+                  <TableNameValueRow name="Year" value={season} />
+                  <TableNameValueRow
+                    name="Team"
+                    value={
+                      <a
+                        target="_blank"
+                        href={team.url}
+                        rel="noopener noreferrer"
+                        onClick={stopPropagation}
+                      >
+                        {team.name}
+                      </a>
+                    }
+                  />
+                  <TableNameValueRow name="Points" value={points} />
+                  <TableNameValueRow
+                    name="Wins"
+                    value={
+                      <>
+                        {wins}
+                        <StarIcon />
+                      </>
+                    }
+                  />
+                </tbody>
+              </table>
+            )}
           </CardContent>
         </CardActionArea>
       </Card>
