@@ -16,10 +16,10 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "craco eject",
     "check-ts": "tsc --noEmit --p ./tsconfig.json"
   },
   "eslintConfig": {
@@ -40,6 +40,7 @@
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
+    "@craco/craco": "^5.6.4",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-standard": "^14.1.1",
@@ -87,5 +88,13 @@
         ]
       ]
     }
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!<rootDir>/node_modules/",
+      "!<rootDir>/src/index.tsx",
+      "!<rootDir>/src/serviceWorker.ts"
+    ]
   }
 }
