@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const YearAvatar: React.FC<Props> = ({ className, year = 2005, qaId = 'app' }) => {
+const YearAvatar: React.FC<Props> = ({ className, year, qaId = 'app' }) => {
   const classes = useStyles()
   return (
     <Avatar

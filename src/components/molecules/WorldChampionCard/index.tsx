@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 
 const WorldChampionCard: React.FC<Props> = ({
   standing,
-  standing: { season, DriverStandings },
+  standing: { season, round, DriverStandings },
   onClick,
 }) => {
   const [{ Driver, wins, points, Constructors }] = DriverStandings
@@ -51,7 +51,7 @@ const WorldChampionCard: React.FC<Props> = ({
   }, [onClick, standing])
 
   return (
-    <Grid item xs={12} sm={6} md={3} lg={2}>
+    <Grid item xs={12} sm={6} md={3} lg={2} qa-id={`card-${season}-${round}-${Driver.driverId}`}>
       <Card>
         <CardActionArea onClick={handleClick}>
           <CardHeader

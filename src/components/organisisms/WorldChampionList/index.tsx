@@ -1,0 +1,22 @@
+import React from 'react'
+
+import Grid from '@material-ui/core/Grid'
+import { Standing } from '@f1/shared/models/standing'
+import { WorldChampionCard } from '@f1/components/molecules/WorldChampionCard'
+
+type Props = {
+  records: Standing[]
+  onItemClicked: (record: Standing) => void
+}
+
+const WorldChampionList: React.FC<Props> = ({ records, onItemClicked }) => {
+  return (
+    <Grid container spacing={2}>
+      {records.map((record) => (
+        <WorldChampionCard key={record.season} standing={record} onClick={onItemClicked} />
+      ))}
+    </Grid>
+  )
+}
+
+export { WorldChampionList }
