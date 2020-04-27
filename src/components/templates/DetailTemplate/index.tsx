@@ -4,10 +4,8 @@ import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Breadcrumbs from '@material-ui/core/Breadcrumbs'
-import Grid from '@material-ui/core/Grid'
 import { Race } from '@f1/shared/models/race'
 import { Standing } from '@f1/shared/models/standing'
-import { RaceCard } from '@f1/components/molecules/RaceCard'
 import { RaceList } from '@f1/components/organisisms/RaceList'
 
 type Props = {
@@ -35,7 +33,7 @@ const DetailTemplate: React.FC<Props> = ({ loading, races, winner, season }) => 
           Season {season}
         </Typography>
       </Breadcrumbs>
-      <RaceList loading={loading} winner={winner} races={races} />
+      // <RaceList loading={loading} winner={winner} races={races} />
     </>
   )
 }

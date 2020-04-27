@@ -7,7 +7,6 @@ import { useRaceList } from '@f1/components/hooks/useRaceList'
 const Detail: React.FC<{}> = () => {
   const { season } = useParams()
   const { records, winner, loading } = useRaceList({ season })
-
   return <DetailTemplate loading={loading} races={records} season={season} winner={winner} />
 }
 

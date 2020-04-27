@@ -1,44 +1,58 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# FC Coding Challenge
 
-## Available Scripts
+## Problem:
 
-In the project directory, you can run:
+> User is a big F1 fan. Unfortunately the Ergast API, which provides historical data about the F1, is missing an appropriate Ui. User is specifically interested in the F1 seasons 2005 until 2015.
 
-### `yarn start`
+## To Do:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+> Build a single page application to display F1 World Champions between the years 2005 and 2015. Additionally build a detail page for each Season that shows the winner of each race.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Prerequisites
 
-### `yarn test`
+- [node](https://nodejs.org) v12
+- [npm](https://www.npmjs.com/get-npm) or [yarn](https://yarnpkg.com/en/)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Instalation
 
-### `yarn build`
+- `yarn install` or `npm install`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Commands
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Run
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `yarn start` or `npm start`
 
-### `yarn eject`
+### Test
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- `yarn test`
+- `yarn test:watch`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Dependencies
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- [React 16](htps://reactjs.org/)
+- [Material-UI](https://material-ui.com)
+- [React Router](https://reacttraining.com/react-router/web/guides/quick-start)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## System Design Organization
 
-## Learn More
+- [Atomic](https://cheesecakelabs.com/blog/rethinking-atomic-design-react-projects/)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Criteria
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Based on the main request, I decided to use CRA and Typescript in order to build the app in the fastest and clean way posible. I've extended the CRA webpack configuration using [craco](https://www.npmjs.com/package/@craco/craco) since I'd liked to use `absolute import paths` like `@f1/components`, `@f1/pages`, ...etc. Since, is a small app I've decided to not use any state manager like Redux or Mobx, but instead the application and compoents handle it's states using hooks and context.
+
+For styling `Material-UI` has its own implementation of CSS-in-JS [Styles Components](https://material-ui.com/es/styles/basics/). I created a context to handling the application Theme and if in a future I'd like to add any more theme or change the main app color will be simple and clean.
+
+For testing I used [Jest](https://jestjs.io/) and [React Testing Library](https://github.com/testing-library/react-testing-library), and reach the `~97%` of coverage
+
+## Development environment
+
+I used many tools to keep the code cleaner as possible:
+
+- [lint-staged](https://github.com/okonet/lint-staged)
+- [husky](https://github.com/typicode/husky)
+- [commitlint](https://github.com/conventional-changelog/commitlint)
+- [prettier](https://prettier.io/)
+- [eslint](https://eslint.org/)
+- [Standard JS](https://standardjs.com/)

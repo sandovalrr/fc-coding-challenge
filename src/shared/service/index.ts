@@ -27,7 +27,6 @@ const fetchWorldChampionBySeason = async (season: string): Promise<Standing> => 
   ).then((result) => result.json())
 
   const [result] = response.MRData.StandingsTable.StandingsLists
-
   return result
 }
 
@@ -39,4 +38,16 @@ const fetchRaceListBySeason = async (season: string): Promise<Race[]> => {
   return response.MRData.RaceTable.Races
 }
 
-export { fetchWorldChampions, fetchWorldChampionBySeason, fetchRaceListBySeason }
+const fetchRaceAndWorldChampionBySeason = async (season: string): Promise<[Standing, Race[]]> => {
+  const champion = await fetchWorldChampionBySeason(season)
+  const races = await fetchRaceListBySeason(season)
+
+  return [champion, races]
+}
+
+export {
+  fetchWorldChampions,
+  fetchWorldChampionBySeason,
+  fetchRaceListBySeason,
+  fetchRaceAndWorldChampionBySeason,
+}

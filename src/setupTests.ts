@@ -15,6 +15,8 @@ jest.mock('react-router-dom', () => ({
     push: jest.fn(),
     goBack: jest.fn(),
   }),
+  useParams: () => ({ season: '2005' }),
+  Link: () => 'div',
 }))
 
 configure({ testIdAttribute: 'qa-id' })

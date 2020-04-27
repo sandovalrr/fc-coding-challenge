@@ -59,7 +59,10 @@ const WorldChampionCard: React.FC<Props> = ({
   return (
     <Grid item xs={12} sm={6} md={3} lg={2} qa-id={`card-${season}-${round}-${Driver.driverId}`}>
       <Card>
-        <CardActionArea onClick={handleClick}>
+        <CardActionArea
+          onClick={handleClick}
+          qa-id={`card-action-${season}-${round}-${Driver.driverId}`}
+        >
           <CardHeader
             classes={{ title: classes.title, subheader: classes.subheader }}
             avatar={
@@ -121,7 +124,7 @@ const WorldChampionCard: React.FC<Props> = ({
                     value={
                       <>
                         {wins}
-                        <StarIcon className={classes.highlight}/>
+                        <StarIcon className={classes.highlight} />
                       </>
                     }
                   />

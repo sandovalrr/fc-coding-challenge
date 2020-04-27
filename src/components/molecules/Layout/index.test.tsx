@@ -31,7 +31,7 @@ describe('<Layout />', () => {
       showBackButton: true,
     })
 
-    const button =getByTestId('app-go-back-button')
+    const button = getByTestId('app-go-back-button')
     expect(button).toBeInTheDocument()
     fireEvent.click(button)
   })
