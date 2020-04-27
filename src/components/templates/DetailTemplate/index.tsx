@@ -1,9 +1,21 @@
 import React from 'react'
 
-import { useParams, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Breadcrumbs from '@material-ui/core/Breadcrumbs'
+import Grid from '@material-ui/core/Grid'
+import { Race } from '@f1/shared/models/race'
+import { Standing } from '@f1/shared/models/standing'
+import { RaceCard } from '@f1/components/molecules/RaceCard'
+import { RaceList } from '@f1/components/organisisms/RaceList'
+
+type Props = {
+  season: string
+  races: Race[]
+  winner?: Standing
+  loading: boolean
+}
 
 const useStyles = makeStyles((theme) => ({
   breadcrumbs: {
@@ -11,9 +23,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const DetailTemplate: React.FC<{}> = () => {
+const DetailTemplate: React.FC<Props> = ({ loading, races, winner, season }) => {
   const classes = useStyles()
-  const { season } = useParams()
   return (
     <>
       <Breadcrumbs aria-label="breadcrumb" className={classes.breadcrumbs}>
@@ -24,7 +35,7 @@ const DetailTemplate: React.FC<{}> = () => {
           Season {season}
         </Typography>
       </Breadcrumbs>
-      <div>hola</div>
+      <RaceList loading={loading} winner={winner} races={races} />
     </>
   )
 }

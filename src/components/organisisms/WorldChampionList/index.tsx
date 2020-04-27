@@ -27,6 +27,7 @@ const WorldChampionList: React.FC<Props> = ({ records, onItemClicked, loading })
     [loading, records],
   )
 
+
   return (
     <Grid container spacing={2}>
       {items.map((record) => (

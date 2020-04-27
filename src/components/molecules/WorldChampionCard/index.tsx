@@ -20,6 +20,9 @@ type Props = {
 }
 
 const useStyles = makeStyles((theme) => ({
+  highlight: {
+    color: theme.palette.warning.main,
+  },
   title: {
     ...theme.typography.h5,
   },
@@ -90,10 +93,10 @@ const WorldChampionCard: React.FC<Props> = ({
           <CardContent>
             {loading ? (
               <>
-                <Skeleton animation="wave" height={15} width="100%" />
-                <Skeleton animation="wave" height={15} width="100%" />
-                <Skeleton animation="wave" height={15} width="100%" />
-                <Skeleton animation="wave" height={15} width="100%" />
+                <Skeleton animation="wave" height={25} width="100%" />
+                <Skeleton animation="wave" height={25} width="100%" />
+                <Skeleton animation="wave" height={25} width="100%" />
+                <Skeleton animation="wave" height={25} width="100%" />
               </>
             ) : (
               <table className={classes.table}>
@@ -118,7 +121,7 @@ const WorldChampionCard: React.FC<Props> = ({
                     value={
                       <>
                         {wins}
-                        <StarIcon />
+                        <StarIcon className={classes.highlight}/>
                       </>
                     }
                   />

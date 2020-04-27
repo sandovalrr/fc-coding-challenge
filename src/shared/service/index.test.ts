@@ -1,6 +1,6 @@
 import { FetchMock } from 'jest-fetch-mock'
 
-import { fetchWorldChampions } from '.'
+import { fetchWorldChampions, fetchWorldChampionBySeason } from '.'
 
 const worldChampionsFetchMock = {
   MRData: {
@@ -348,8 +348,9 @@ const worldChampionsFetchMock = {
   },
 }
 
+const fetchMock = fetch as FetchMock
+
 describe('fetchWorldChampions service', () => {
-  const fetchMock = fetch as FetchMock
   afterEach(() => {
     fetchMock.mockClear()
   })
@@ -358,5 +359,17 @@ describe('fetchWorldChampions service', () => {
     fetchMock.mockResponse(JSON.stringify(worldChampionsFetchMock))
     const records = await fetchWorldChampions()
     expect(records.length).toEqual(11)
+  })
+})
+
+describe('fetchWorldChampionBySeason service', () => {
+  afterEach(() => {
+    fetchMock.mockClear()
+  })
+
+  test('it should return a signle record', async () => {
+    fetchMock.mockResponse(JSON.stringify(worldChampionsFetchMock))
+    const record = await fetchWorldChampionBySeason('2005')
+    expect(record.season).toEqual('2005')
   })
 })
