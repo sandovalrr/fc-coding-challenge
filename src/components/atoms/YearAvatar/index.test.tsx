@@ -25,4 +25,12 @@ describe('<YearAvatar />', () => {
 
     expect(getByTestId('test-year-avatar')).toBeInTheDocument()
   })
+
+  test('should display skeleton', () => {
+    const { getByTestId } = renderComponent({
+      loading: true,
+    })
+
+    expect(getByTestId('app-year-avatar-skeleton')).toBeInTheDocument()
+  })
 })

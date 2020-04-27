@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { render } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 
 import { Layout } from '.'
 
@@ -31,6 +31,8 @@ describe('<Layout />', () => {
       showBackButton: true,
     })
 
-    expect(getByTestId('app-go-back-button')).toBeInTheDocument()
+    const button =getByTestId('app-go-back-button')
+    expect(button).toBeInTheDocument()
+    fireEvent.click(button)
   })
 })

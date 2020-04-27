@@ -29,7 +29,15 @@ const useStyles = makeStyles((theme) => ({
 const YearAvatar: React.FC<Props> = ({ className, year, qaId = 'app', loading }) => {
   const classes = useStyles()
 
-  if (loading) return <Skeleton className={classes.root} animation="wave" variant="circle" />
+  if (loading)
+    return (
+      <Skeleton
+        className={classes.root}
+        animation="wave"
+        variant="circle"
+        qa-id={`${qaId}-year-avatar-skeleton`}
+      />
+    )
 
   return (
     <Avatar

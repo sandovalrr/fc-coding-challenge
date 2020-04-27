@@ -13,6 +13,7 @@ customGlobal.fetchMock = customGlobal.fetch
 jest.mock('react-router-dom', () => ({
   useHistory: () => ({
     push: jest.fn(),
+    goBack: jest.fn(),
   }),
 }))
 
